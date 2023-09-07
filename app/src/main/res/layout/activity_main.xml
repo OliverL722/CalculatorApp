@@ -7,12 +7,15 @@
     android:background="@color/md_theme_light_surface"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/testText"
-        android:layout_width="206dp"
-        android:layout_height="60dp"
-        android:padding="@dimen/testDimen"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="29dp" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="@dimen/buttonSide"
+        android:layout_height="@dimen/buttonSide"
+        android:width="0dp"
+        android:height="@dimen/buttonSide"
+        android:text="Button"
+        app:strokeColor="@color/md_theme_dark_shadow"
+        app:strokeWidth="@dimen/stokeSize"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="558dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
