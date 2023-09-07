@@ -4,18 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_surface"
+    android:background="@color/md_theme_light_primaryContainer"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        style="@style/operationStyle"
+        android:id="@+id/buttonMultiply"
         android:layout_width="@dimen/buttonSide"
         android:layout_height="@dimen/buttonSide"
         android:width="0dp"
         android:height="@dimen/buttonSide"
-        android:text="Button"
+        android:text="x"
         app:strokeColor="@color/md_theme_dark_shadow"
         app:strokeWidth="@dimen/stokeSize"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="558dp" />
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <Button
+        style="@style/operationStyle"
+        android:id="@+id/buttonDivide"
+        android:layout_width="@dimen/buttonSide"
+        android:layout_height="@dimen/buttonSide"
+        android:width="0dp"
+        android:height="@dimen/buttonSide"
+        android:text="÷"
+        app:strokeColor="@color/md_theme_dark_shadow"
+        app:strokeWidth="@dimen/stokeSize"
+        tools:layout_editor_absoluteX="305dp"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <Button
+        style="@style/operationStyle"
+        android:id="@+id/buttonSubtract"
+        android:layout_width="@dimen/buttonSide"
+        android:layout_height="@dimen/buttonSide"
+        android:width="0dp"
+        android:height="@dimen/buttonSide"
+        android:text="-"
+        app:strokeColor="@color/md_theme_dark_shadow"
+        app:strokeWidth="@dimen/stokeSize"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <Button
+        style="@style/operationStyle"
+        android:id="@+id/buttonAdd"
+        android:layout_width="@dimen/buttonSide"
+        android:layout_height="@dimen/buttonSide"
+        android:width="0dp"
+        android:height="@dimen/buttonSide"
+        android:includeFontPadding="true"
+        android:text="+"
+        app:strokeColor="@color/md_theme_dark_shadow"
+        app:strokeWidth="@dimen/stokeSize"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="@dimen/titleWidth"
+        android:layout_height="@dimen/titleHeight"
+        android:background="@color/md_theme_light_background"
+        android:padding="@dimen/titlePadding"
+        android:text="@string/titleCalculator"
+        android:textSize="40sp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textViewInputOne"
+        android:layout_width="228dp"
+        android:layout_height="63dp"
+        android:background="@color/md_theme_light_background"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="137dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
