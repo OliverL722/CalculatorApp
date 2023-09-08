@@ -2,6 +2,7 @@
 <resources>
     <dimen name = "stokeSize">5dp</dimen>
     <dimen name="buttonSide">90dp</dimen>
+    <dimen name="buttonPadding">10dp</dimen>
 
     <dimen name="titleWidth">300dp</dimen>
     <dimen name="titleHeight">80dp</dimen>

@@ -2,6 +2,14 @@
 <resources>
     <style name = "operationStyle">
         <item name = "android:textSize">50dp</item>
-        <item name = "android:padding">@dimen/titlePadding</item>
+        <item name = "android:padding">@dimen/buttonPadding</item>
+        <item name = "android:layout_width">@dimen/buttonSide</item>
+        <item name = "android:layout_height">@dimen/buttonSide</item>
+        <item name = "strokeColor">@color/md_theme_dark_shadow</item>
+        <item name="strokeWidth">@dimen/stokeSize</item>
+    </style>
+    <style name = "numbersStyle" parent="operationStyle">
+        <item name = "android:backgroundTint">@color/md_theme_dark_background</item>
+        <item name = "strokeColor">@color/strokeOutsideDark</item>
     </style>
 </resources>
