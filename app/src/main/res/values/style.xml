@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- All the button styling attributes to be applied -->
+
     <style name = "operationStyle">
         <item name = "android:textSize">50dp</item>
         <item name = "android:padding">@dimen/buttonPadding</item>
+        <item name = "android:layout_margin">5dp</item>
         <item name = "android:layout_width">@dimen/buttonSide</item>
         <item name = "android:layout_height">@dimen/buttonSide</item>
         <item name = "strokeColor">@color/md_theme_dark_shadow</item>
         <item name="strokeWidth">@dimen/stokeSize</item>
+        <item name="android:onClick">getNumSelected</item>
     </style>
+
     <style name = "numbersStyle" parent="operationStyle">
         <item name = "android:backgroundTint">@color/md_theme_dark_background</item>
         <item name = "strokeColor">@color/strokeOutsideDark</item>
+    </style>
+
+    <!-- This is the style for the rounded text box. For more info, head to the drawable xml file.-->
+    <style name = "outputStyle">
+        <item name="android:background">@drawable/rounded_edit_text</item>
+        <item name = "android:padding">@dimen/textPadding</item>
     </style>
 </resources>

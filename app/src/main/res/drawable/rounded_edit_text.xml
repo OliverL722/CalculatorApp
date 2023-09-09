@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- In order to create rounded text, I had to create a new drawable resource file to
+     replace the background with. Using a drawable rectangle, I can change the corner
+     radius to create a rounded text-box. Source: ChatGPT-->
+
+<!-- Defaulted to selector element, however we want shape if we are going to create
+     a rectangle. -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/outputTextColor"/>
+    <corners android:radius="40dp"/>
+
+    <!-- In order to add a border, you need to create a stroke element inside of the shape.
+         Width/Color/etc attributes can be added inside of the element. Source: GPT-->
+    <stroke android:width="5dp" android:color="@color/md_theme_light_shadow"/>
+
+</shape>

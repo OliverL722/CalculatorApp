@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CalculatorAppLesiakowski</string>
     <string name="titleCalculator">Ti-99 Calculator</string>
-    <string name="inputOne">Input One: </string>
-    <string name="inputTwo">Input Two: </string>
+    <string name="input">Input: </string>
 </resources>
