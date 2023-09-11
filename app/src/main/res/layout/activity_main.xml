@@ -16,7 +16,6 @@
         style="@style/outputStyle"
         android:layout_width="@dimen/titleWidth"
         android:layout_height="@dimen/titleHeight"
-        android:layout_margin="@dimen/titleMargins"
         android:layout_marginBottom="16dp"
         android:hint="@string/input"
         android:text=""
@@ -49,9 +48,11 @@
     <Button
         android:id="@+id/buttonDivide"
         style="@style/operationStyle"
+        android:layout_marginBottom="4dp"
         android:text="÷"
         app:layout_constraintBottom_toTopOf="@+id/buttonSeven"
         app:layout_constraintEnd_toStartOf="@+id/buttonMultiply"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -167,6 +168,8 @@
     <Button
         android:id="@+id/buttonNine"
         style="@style/numbersStyle"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:text="9"
         app:layout_constraintBottom_toTopOf="@+id/buttonSix"
         app:layout_constraintEnd_toStartOf="@+id/buttonAdd" />

@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String numSelected = "";
 
+    private double num1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getNumSelected(View v) {
+
         if (v.getId() == R.id.buttonOne) {
             Log.i("Oliver", "Selected one!");
             numSelected += 1;
@@ -48,30 +51,72 @@ public class MainActivity extends AppCompatActivity {
         } else if (v.getId() == R.id.buttonZero) {
             Log.i("Oliver", "Selected zero!");
             numSelected += 0;
-        } else if (v.getId() == R.id.buttonPeriod) {
-            Log.i("Oliver", "Selected .!");
-            numSelected += ".";
-        } else if (v.getId() == R.id.buttonAdd) {
-            Log.i("Oliver", "Selected +!");
-            numSelected += "+";
-        } else if (v.getId() == R.id.buttonSubtract) {
-            Log.i("Oliver", "Selected -!");
-            numSelected += "-";
-        } else if (v.getId() == R.id.buttonMultiply) {
-            Log.i("Oliver", "Selected x!");
-            numSelected += "x";
-        } else if (v.getId() == R.id.buttonDivide) {
-            Log.i("Oliver", "Selected /!");
-            numSelected += "/";
-        } else if (v.getId() == R.id.buttonClear) {
-            Log.i("Oliver", "Selected C!");
-            numSelected += "C";
-        } else if (v.getId() == R.id.buttonEqual) {
-            Log.i("Oliver", "Selected =!");
-            numSelected += "=";
         }
 
+        else if (v.getId() == R.id.buttonPeriod) {
+            Log.i("Oliver", "Selected .!");
+            numSelected += ".";
+
+        }
+        else if (v.getId() == R.id.buttonAdd) {
+            Log.i("Oliver", "Selected +!");
+
+            /**
+             * IN CASE USER TRIES TO OPERATE w/o NUMBER
+             */
+
+            if(numSelected != "") {
+                num1 = Double.parseDouble(numSelected);
+            }
+
+            Log.i("Oliver", "Num1 is" + num1);
+            numSelected = "+";
+        }
+
+        else if (v.getId() == R.id.buttonSubtract) {
+            Log.i("Oliver", "Selected -!");
+
+            if(numSelected != "") {
+                num1 = Double.parseDouble(numSelected);
+            }
+
+            numSelected = "-";
+        }
+        else if (v.getId() == R.id.buttonMultiply) {
+            Log.i("Oliver", "Selected x!");
+
+            if(numSelected != "") {
+                num1 = Double.parseDouble(numSelected);
+            }
+
+            numSelected = "x";
+        }
+        else if (v.getId() == R.id.buttonDivide) {
+            Log.i("Oliver", "Selected /!");
+
+            if(numSelected != "") {
+                num1 = Double.parseDouble(numSelected);
+            }
+
+            numSelected = "/";
+        }
+        else if (v.getId() == R.id.buttonClear) {
+            Log.i("Oliver", "Selected C!");
+
+            numSelected = "C";
+
+        } else if (v.getId() == R.id.buttonEqual) {
+            Log.i("Oliver", "Selected =!");
+
+            numSelected += "=";
+        }
         TextView input = findViewById(R.id.inputText);
+
+        if(numSelected.equals("C")){
+            input.setText("");
+            numSelected = "";
+        }
+
         input.setText(numSelected);
     }
 }
