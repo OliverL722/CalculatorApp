@@ -12,16 +12,20 @@
         <item name = "strokeColor">@color/md_theme_dark_shadow</item>
         <item name="strokeWidth">@dimen/stokeSize</item>
         <item name="android:onClick">getNumSelected</item>
+        <!--THIS TAG IS SO WE KNOW WHAT BUTTONS ARE OPERATORS/NUMBERS-->
+        <item name="android:tag">Operator</item>
     </style>
 
     <style name = "numbersStyle" parent="operationStyle">
         <item name = "android:backgroundTint">@color/md_theme_dark_background</item>
         <item name = "strokeColor">@color/strokeOutsideDark</item>
+        <item name="android:tag">Number</item>
     </style>
 
     <!-- This is the style for the rounded text box. For more info, head to the drawable xml file.-->
     <style name = "outputStyle">
         <item name="android:background">@drawable/rounded_edit_text</item>
         <item name = "android:padding">@dimen/textPadding</item>
+        <item name = "android:textColor">@color/md_theme_light_shadow</item>
     </style>
 </resources>

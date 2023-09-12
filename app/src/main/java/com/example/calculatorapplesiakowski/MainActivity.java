@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
     private String numSelected = "";
 
     private double num1;
+    private double num2;
+
+    private boolean onNum2 = false;
+
+    private String operator = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,104 +25,73 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public double calculate(){
+
+        if(operator.equals("+")){
+            return num1 + num2;
+        }
+        else if(operator.equals("-")){
+            return num1 - num2;
+        }
+        else if(operator.equals("x")){
+            return num1*num2;
+        }
+        else{
+            return num1/num2;
+        }
+
+    }
+
+    //Make sense of input and calculates accordingly
     public void getNumSelected(View v) {
 
-        if (v.getId() == R.id.buttonOne) {
-            Log.i("Oliver", "Selected one!");
-            numSelected += 1;
-        } else if (v.getId() == R.id.buttonTwo) {
-            Log.i("Oliver", "Selected two!");
-            numSelected += 2;
-        } else if (v.getId() == R.id.buttonThree) {
-            Log.i("Oliver", "Selected three!");
-            numSelected += 3;
-        } else if (v.getId() == R.id.buttonFour) {
-            Log.i("Oliver", "Selected four!");
-            numSelected += 4;
-        } else if (v.getId() == R.id.buttonFive) {
-            Log.i("Oliver", "Selected five");
-            numSelected += 5;
-        } else if (v.getId() == R.id.buttonSix) {
-            Log.i("Oliver", "Selected six!");
-            numSelected += 6;
-        } else if (v.getId() == R.id.buttonSeven) {
-            Log.i("Oliver", "Selected seven!");
-            numSelected += 7;
-        } else if (v.getId() == R.id.buttonEight) {
-            Log.i("Oliver", "Selected eight!");
-            numSelected += 8;
-        } else if (v.getId() == R.id.buttonNine) {
-            Log.i("Oliver", "Selected nine!");
-            numSelected += 9;
-        } else if (v.getId() == R.id.buttonZero) {
-            Log.i("Oliver", "Selected zero!");
-            numSelected += 0;
-        }
-
-        else if (v.getId() == R.id.buttonPeriod) {
-            Log.i("Oliver", "Selected .!");
-            numSelected += ".";
-
-        }
-        else if (v.getId() == R.id.buttonAdd) {
-            Log.i("Oliver", "Selected +!");
-
-            /**
-             * IN CASE USER TRIES TO OPERATE w/o NUMBER
-             */
-
-            if(numSelected != "") {
-                num1 = Double.parseDouble(numSelected);
-            }
-
-            Log.i("Oliver", "Num1 is" + num1);
-            numSelected = "+";
-        }
-
-        else if (v.getId() == R.id.buttonSubtract) {
-            Log.i("Oliver", "Selected -!");
-
-            if(numSelected != "") {
-                num1 = Double.parseDouble(numSelected);
-            }
-
-            numSelected = "-";
-        }
-        else if (v.getId() == R.id.buttonMultiply) {
-            Log.i("Oliver", "Selected x!");
-
-            if(numSelected != "") {
-                num1 = Double.parseDouble(numSelected);
-            }
-
-            numSelected = "x";
-        }
-        else if (v.getId() == R.id.buttonDivide) {
-            Log.i("Oliver", "Selected /!");
-
-            if(numSelected != "") {
-                num1 = Double.parseDouble(numSelected);
-            }
-
-            numSelected = "/";
-        }
-        else if (v.getId() == R.id.buttonClear) {
-            Log.i("Oliver", "Selected C!");
-
-            numSelected = "C";
-
-        } else if (v.getId() == R.id.buttonEqual) {
-            Log.i("Oliver", "Selected =!");
-
-            numSelected += "=";
-        }
+        Button butSelected = findViewById(v.getId());
         TextView input = findViewById(R.id.inputText);
 
-        if(numSelected.equals("C")){
-            input.setText("");
+        //EQUAL
+        if(butSelected.getText().equals("=")){
+
+            num2 = Double.parseDouble(numSelected);
             numSelected = "";
+            Log.i("Oliver", "NUM 2 Is " + num2);
+
+            Double calculatedNum = calculate();
+
+            input.setText(Double.toString(calculatedNum));
+
+            //IN CASE USER WANTS TO DO MORE WITH ANSWER
+
+            num1 = calculatedNum;
+            numSelected = Double.toString(num1);
         }
 
-        input.setText(numSelected);
+        //CLEAR
+        else if(butSelected.getText().equals("C")){
+            input.setText("");
+            numSelected = "";
+            num1 = 0;
+            num2 = 0;
+            operator = "";
+            onNum2 = false;
+        }
+        else if(butSelected.getTag().equals("Number") && !onNum2) {
+            numSelected += butSelected.getText();
+            input.setText(numSelected);
+        }
+
+        else if(butSelected.getTag().equals("Operator")){
+            operator += butSelected.getText();
+            num1 = Double.parseDouble(numSelected);
+            numSelected = "";
+            onNum2 = true;
+            Log.i("Oliver", "NUM 1 Is " + num1);
+        }
+
+        else{
+            numSelected += butSelected.getText();
+            input.setText(numSelected);
+        }
+
+
     }
 }
