@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private double num1;
     private double num2;
 
+    private boolean onNum1 = true;
     private boolean onNum2 = false;
 
     private String operator = "";
@@ -27,18 +28,23 @@ public class MainActivity extends AppCompatActivity {
 
     public double calculate(){
 
-        if(operator.equals("+")){
+        String beforeOperator = operator;
+        operator = "";
+
+        if(beforeOperator.equals("+")){
             return num1 + num2;
         }
-        else if(operator.equals("-")){
+        else if(beforeOperator.equals("-")){
             return num1 - num2;
         }
-        else if(operator.equals("x")){
+        else if(beforeOperator.equals("x")){
             return num1*num2;
         }
         else{
             return num1/num2;
         }
+
+
 
     }
 
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             operator = "";
             onNum2 = false;
         }
-        else if(butSelected.getTag().equals("Number") && !onNum2) {
+        else if(butSelected.getTag().equals("Number") && !onNum2 && onNum1) {
             numSelected += butSelected.getText();
             input.setText(numSelected);
         }
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             num1 = Double.parseDouble(numSelected);
             numSelected = "";
             onNum2 = true;
+            onNum1 = false;
             Log.i("Oliver", "NUM 1 Is " + num1);
         }
 
