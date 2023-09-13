@@ -2,6 +2,9 @@ package com.example.calculatorapplesiakowski;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private double num1;
     private double num2;
 
-    private boolean onNum1 = true;
-    private boolean onNum2 = false;
+    private boolean isOperationSelected = false;
+    private boolean oneDecimal = false;
 
     private String operator = "";
 
@@ -40,11 +43,21 @@ public class MainActivity extends AppCompatActivity {
         else if(beforeOperator.equals("x")){
             return num1*num2;
         }
-        else{
+        else {
             return num1/num2;
         }
+    }
 
-
+    public void clearButBackgrounds(View v){
+        /**
+         *  Holy moly was this hard to get, to set a button background to one of my colors.xml colors, you first have to grab
+         *  the resource file, where you grab color, in which you grab the xml color file, weird? Applied from chatGPT
+         */
+        findViewById(R.id.buttonDivide).setBackgroundColor(getResources().getColor(R.color.strokeOutsideDark));
+        findViewById(R.id.buttonMultiply).setBackgroundColor(getResources().getColor(R.color.strokeOutsideDark));
+        findViewById(R.id.buttonSubtract).setBackgroundColor(getResources().getColor(R.color.strokeOutsideDark));
+        findViewById(R.id.buttonClear).setBackgroundColor(getResources().getColor(R.color.strokeOutsideDark));
+        findViewById(R.id.buttonAdd).setBackgroundColor(getResources().getColor(R.color.strokeOutsideDark));
 
     }
 
@@ -57,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         //EQUAL
         if(butSelected.getText().equals("=")){
 
+            clearButBackgrounds(v);
             num2 = Double.parseDouble(numSelected);
             numSelected = "";
             Log.i("Oliver", "NUM 2 Is " + num2);
@@ -69,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
             num1 = calculatedNum;
             numSelected = Double.toString(num1);
+            oneDecimal = true;
+        }
+
+        else if(butSelected.getText().equals(".") && oneDecimal == false){
+            isOperationSelected = false;
+            numSelected += butSelected.getText();
+            input.setText(numSelected);
+            oneDecimal = true;
         }
 
         //CLEAR
@@ -78,27 +100,33 @@ public class MainActivity extends AppCompatActivity {
             num1 = 0;
             num2 = 0;
             operator = "";
-            onNum2 = false;
+            oneDecimal = false;
         }
-        else if(butSelected.getTag().equals("Number") && !onNum2 && onNum1) {
+
+        else if(butSelected.getTag().equals("Number") && !butSelected.getText().equals(".")) {
+            isOperationSelected = false;
             numSelected += butSelected.getText();
             input.setText(numSelected);
         }
 
-        else if(butSelected.getTag().equals("Operator")){
+        else if(butSelected.getTag().equals("Operator") && isOperationSelected == false){
+            clearButBackgrounds(v);
+            butSelected.setBackgroundColor(Color.CYAN);
+            isOperationSelected = true;
+            operator = "";
             operator += butSelected.getText();
             num1 = Double.parseDouble(numSelected);
             numSelected = "";
-            onNum2 = true;
-            onNum1 = false;
+            oneDecimal = false;
             Log.i("Oliver", "NUM 1 Is " + num1);
         }
 
-        else{
-            numSelected += butSelected.getText();
-            input.setText(numSelected);
+        //IF USER SELECTS OTHER OPERATOR
+        else if(isOperationSelected == true){
+            clearButBackgrounds(v);
+            butSelected.setBackgroundColor(Color.CYAN);
+            operator = "";
+            operator += butSelected.getText();
         }
-
-
     }
 }

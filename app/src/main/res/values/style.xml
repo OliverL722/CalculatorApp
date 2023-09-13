@@ -9,6 +9,7 @@
         <item name = "android:layout_margin">5dp</item>
         <item name = "android:layout_width">@dimen/buttonSide</item>
         <item name = "android:layout_height">@dimen/buttonSide</item>
+        <item name = "android:backgroundTint">@color/strokeOutsideDark</item>
         <item name = "strokeColor">@color/md_theme_dark_shadow</item>
         <item name="strokeWidth">@dimen/stokeSize</item>
         <item name="android:onClick">getNumSelected</item>

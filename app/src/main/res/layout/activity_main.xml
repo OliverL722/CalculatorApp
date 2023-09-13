@@ -92,6 +92,7 @@
         android:height="@dimen/buttonSide"
         android:includeFontPadding="true"
         android:text="+"
+        android:textColorLink="@color/md_theme_dark_background"
         app:layout_constraintBottom_toTopOf="@+id/buttonEqual"
         app:layout_constraintEnd_toEndOf="parent" />
 
