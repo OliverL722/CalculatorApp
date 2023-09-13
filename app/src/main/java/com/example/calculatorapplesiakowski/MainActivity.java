@@ -13,14 +13,21 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    //NUMBER BEING TYPED IN ON THE SCREEN
     private String numSelected = "";
 
+    //2 NUMS TO OPERATE
     private double num1;
     private double num2;
 
+    //WHETHER AN OPERATION IS SELECTED
     private boolean isOperationSelected = false;
+
+    //PREVENT TWO DECIMALS
     private boolean oneDecimal = false;
 
+    //OPERATOR
     private String operator = "";
 
     @Override
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //DOES MATHEMATICAL CALCULATION
     public double calculate(){
 
         String beforeOperator = operator;
@@ -48,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //RESETS BUTTON BACKGROUND
     public void clearButBackgrounds(View v){
         /**
          *  Holy moly was this hard to get, to set a button background to one of my colors.xml colors, you first have to grab
@@ -86,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             oneDecimal = true;
         }
 
+        //USER SELECTS PERIOD
         else if(butSelected.getText().equals(".") && oneDecimal == false){
             isOperationSelected = false;
             numSelected += butSelected.getText();
@@ -102,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
             operator = "";
             oneDecimal = false;
         }
-
+        //USER SELECTS NUMBER
         else if(butSelected.getTag().equals("Number") && !butSelected.getText().equals(".")) {
             isOperationSelected = false;
             numSelected += butSelected.getText();
             input.setText(numSelected);
         }
-
+        //USER SELECTS OPERATOR
         else if(butSelected.getTag().equals("Operator") && isOperationSelected == false){
             clearButBackgrounds(v);
             butSelected.setBackgroundColor(Color.CYAN);

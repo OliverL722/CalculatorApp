@@ -30,9 +30,9 @@
         android:layout_height="84dp"
         android:fontFamily="@font/epilogue_semibold"
         android:padding="10dp"
-        android:text="Ti-99 Platinum"
+        android:text="@string/titleCalculator"
         android:textColor="@color/md_theme_dark_scrim"
-        android:textSize="50sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
